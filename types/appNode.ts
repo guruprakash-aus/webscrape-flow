@@ -1,6 +1,6 @@
 import type { Node } from '@xyflow/react';
 
-import type { TaskType } from './task';
+import type { TaskParam, TaskType } from './task';
 
 export type AppNode = Node & {
   data: AppNodeData;
@@ -17,4 +17,11 @@ export type AppNodeData = {
 export type AppNodeMissingInputs = {
   nodeId: string;
   inputs: string[];
+};
+
+export type ParamProps = {
+  param: TaskParam;
+  value: string;
+  updateNodeParamValue: (newValue: string) => void;
+  disabled?: boolean;
 };

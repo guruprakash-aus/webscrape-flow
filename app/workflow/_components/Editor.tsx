@@ -11,6 +11,7 @@ import { WorkflowStatus } from '@/types/workflow';
 
 import FlowEditor from './FlowEditor';
 import Topbar from './topbar/Topbar';
+import TaskMenu from './TaskMenu';
 // import TaskMenu from './task-menu';
 
 type Props = { workflow: Workflow };
@@ -27,7 +28,7 @@ const Editor: FC<Props> = ({ workflow }) => {
 
       <div className="flex h-full w-full flex-col overflow-hidden">
         <section className="flex h-full overflow-auto">
-          {/* <TaskMenu /> */}
+          <TaskMenu />
           <FlowEditor workflow={workflow} />
         </section>
       </div>

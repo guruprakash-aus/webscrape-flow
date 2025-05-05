@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - webscrapeflowdb
+    restart: unless-stopped
+    volumes:
+      - .:/app:cached # bind mount
+      - /app/node_modules # anonymous volume
+    env_file:
+      - .env
+  
+  webscrapeflowdb:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: webscrapeflow
+      POSTGRES_PASSWORD: wsfpassword
+      POSTGRES_DB: webscrapeflowdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+  
+volumes:
+  db_data:
